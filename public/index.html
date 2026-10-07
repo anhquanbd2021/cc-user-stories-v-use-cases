@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Spec Grader — is your task a spec or a vibe?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="/styles.css">
+<!-- pb-shell --><link rel="stylesheet" href="./pb-shell.css"><!-- pb-shell --><!-- pb-back --><link rel="stylesheet" href="./pb-back.css"><!-- pb-back --></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site">
+  <p class="eyebrow">Article Playbook · Interactive Demo</p>
+  <h1>Agent Spec Grader</h1>
+  <p class="sub">Score a task spec for an autonomous agent against the eight questions it cannot answer itself.
+  <a href="/guide.html">How grading works &rarr;</a></p>
+</header>
+
+<main id="main">
+  <section class="panel">
+    <h2>The same job, four ways to write it</h2>
+    <div class="tabs" id="example-tabs"></div>
+    <div id="example-detail" class="detail"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Grade your own spec</h2>
+    <p class="hint">Paste a task spec as JSON. Fields the grader looks for:
+      <code>actor</code>, <code>action</code>/<code>mainFlow</code>, <code>trigger</code>, <code>tools</code>,
+      <code>done</code>/<code>acceptanceCriteria</code>, <code>failureModes</code>/<code>extensions</code>,
+      <code>escalation</code>, <code>budget</code>.</p>
+    <textarea id="custom-spec" rows="9" spellcheck="false" placeholder='{"title": "Nightly cleanup", "action": "close stale issues"}'></textarea>
+    <div class="row">
+      <button id="grade-btn">Grade it</button>
+      <span id="custom-error" class="error"></span>
+    </div>
+    <div id="custom-result"></div>
+  </section>
+</main>
+
+<footer>
+  <p>Agent Spec Grader — a zero-dependency teaching lab. It checks that spec fields exist; it cannot check that they are <em>right</em>.</p>
+</footer>
+
+<script type="module" src="/app.js"></script>
+<!-- pb-shell --><a class="pb-shell" href="https://github.com/anhquanbd2021/cc-user-stories-v-use-cases" title="cc-user-stories-v-use-cases — an Article Playbook demo (view source)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="9" height="9" rx="2" fill="#2dd4bf"/><rect x="13" y="2" width="9" height="9" rx="2" fill="#2dd4bf" opacity=".45"/><rect x="2" y="13" width="9" height="9" rx="2" fill="#2dd4bf" opacity=".45"/><rect x="13" y="13" width="9" height="9" rx="4.5" fill="#2dd4bf"/></svg><b>cc-user-stories-v-use-cases</b><i>DEMO</i></a><!-- pb-shell --><!-- pb-back --><a class="pb-back" id="pb-back" href="https://github.com/anhquanbd2021/cc-user-stories-v-use-cases" title="Back to the article — cc-user-stories-v-use-cases">← Article <i>PLAYBOOK</i></a><script>(function(){var a=document.getElementById('pb-back');if(!a)return;var h=location.hostname;if(/^(localhost|127\.0\.0\.1|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.)/.test(h)){a.href='//'+h+':'+(/^(localhost|127\.0\.0\.1)$/.test(h)?'1234':'30082')+'/microsites/article.html?slug=cc-user-stories-v-use-cases';}})();</script><!-- pb-back --></body>
+</html>

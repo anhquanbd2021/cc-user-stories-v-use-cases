@@ -1,0 +1,26 @@
+{
+  "title": "Auto-merge dependency PRs — delegated to the agent",
+  "actor": "the repo maintainer",
+  "action": "merge Dependabot pull requests whose checks pass",
+  "outcome": "dependency updates land without human review",
+  "trigger": "when a Dependabot PR's required CI checks all report green",
+  "tools": ["read repo", "comment on PRs", "merge PRs labeled dependencies"],
+  "mainFlow": [
+    "confirm the PR author is Dependabot and the label is dependencies",
+    "confirm every required check is green",
+    "merge with squash",
+    "comment on the merged PR linking to the CI run"
+  ],
+  "failureModes": [
+    { "when": "any required check is failing or pending", "policy": "do nothing; re-evaluate on the next check event" },
+    { "when": "the merge conflicts", "policy": "comment 'needs rebase', add the blocked label, stop" },
+    { "when": "CI turns red on main within 5 minutes after merging", "policy": "open an issue, revert the merge only if it was the sole new commit" }
+  ],
+  "acceptanceCriteria": [
+    "PR merged and CI still green 5 minutes later",
+    "no human-authored PR is ever merged",
+    "no file outside the PR diff is touched"
+  ],
+  "escalation": "after 3 failed merge attempts, or if the PR touches workflows/ or auth code → stop and report in the repo's issues",
+  "budget": { "maxMinutesPerPR": 10, "maxToolCallsPerPR": 20 }
+}

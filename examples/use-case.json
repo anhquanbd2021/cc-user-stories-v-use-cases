@@ -1,0 +1,18 @@
+{
+  "title": "Nightly dependency-update run",
+  "actor": "the on-call maintainer",
+  "trigger": "weekdays at 02:00",
+  "mainFlow": [
+    "list open Dependabot PRs",
+    "rebase each PR onto main",
+    "wait for CI",
+    "merge the PRs whose checks pass",
+    "file one summary issue listing merged and skipped PRs"
+  ],
+  "extensions": [
+    "if CI is red on main before the run starts → skip the run and note it in the summary issue",
+    "if a rebase conflicts → leave the PR untouched and list it as skipped",
+    "if a merged PR's checks fail after merge → revert the merge and reopen the PR"
+  ],
+  "done": "one summary issue filed, listing every PR as merged, skipped, or failed"
+}

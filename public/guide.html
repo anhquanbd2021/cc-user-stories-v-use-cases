@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guide — Agent Spec Grader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="/styles.css">
+<!-- pb-shell --><link rel="stylesheet" href="./pb-shell.css"><!-- pb-shell --><!-- pb-back --><link rel="stylesheet" href="./pb-back.css"><!-- pb-back --></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site">
+  <h1>How grading works</h1>
+  <p class="sub"><a href="/">&larr; back to the lab</a></p>
+</header>
+<main id="main">
+  <section class="panel">
+    <h2>The eight checks</h2>
+    <p class="hint">Delegating to an autonomous agent means someone — or something — resolves every
+    ambiguity you leave behind. These are the eight questions a spec must answer so the agent
+    doesn't have to guess:</p>
+    <ul class="checks">
+      <li class="pass"><span class="q">1. actor</span> — who is this for, and under whose authority does the agent act?</li>
+      <li class="pass"><span class="q">2. action</span> — what does it do: a stated <code>action</code> or a numbered <code>mainFlow</code>?</li>
+      <li class="pass"><span class="q">3. trigger</span> — when does it start: a named event or schedule, never "as needed"?</li>
+      <li class="pass"><span class="q">4. tool scope</span> — which tools may it use: an explicit <code>tools</code> allowlist?</li>
+      <li class="pass"><span class="q">5. done condition</span> — how does it verify done: <code>done</code> or <code>acceptanceCriteria</code> the agent can check itself?</li>
+      <li class="pass"><span class="q">6. failure modes</span> — what can go wrong: <code>failureModes</code> or use-case <code>extensions</code>, each with a policy?</li>
+      <li class="pass"><span class="q">7. escalation</span> — when does it stop and ask: an <code>escalation</code> path?</li>
+      <li class="pass"><span class="q">8. budget</span> — how much may it spend: a <code>budget</code> cap on time, calls, or files?</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>The grades</h2>
+    <ul class="checks">
+      <li><span class="grade agent-ready">agent-ready</span> — 8/8. Every question answered; safe to delegate.</li>
+      <li><span class="grade workflow-grade">workflow-grade</span> — 5–7/8. A real workflow, but guardrails are missing.</li>
+      <li><span class="grade story-grade">story-grade</span> — 3–4/8. A delegable unit, but the agent still guesses.</li>
+      <li><span class="grade vibe">vibe</span> — 0–2/8. A wish, not a spec; the model fills the blanks.</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2>Shapes: user story vs use case</h2>
+    <p class="hint">The grader also detects the spec's shape. <strong>User story</strong>:
+    <code>actor</code> + <code>action</code> + <code>outcome</code> — one trigger, one action, one
+    verifiable outcome. <strong>Use case</strong>: <code>mainFlow</code> + <code>extensions</code>
+    or <code>failureModes</code> — a multi-step workflow with named exception paths. Stories answer
+    "is it done?"; use cases answer "what happens when it isn't done yet?".</p>
+  </section>
+
+  <section class="panel">
+    <h2>Honest limits</h2>
+    <p class="hint">This is structural linting. The grader verifies that each field exists and is
+    plausible — it cannot judge whether your acceptance criteria are <em>correct</em>, whether the
+    tool allowlist is tight enough, or whether the escalation path reaches a human who reads it.
+    A spec can score 8/8 and still be a bad idea. Grading tells you the contract is written;
+    it doesn't tell you the contract is wise.</p>
+  </section>
+</main>
+<footer><p>Agent Spec Grader</p></footer>
+<!-- pb-shell --><a class="pb-shell" href="https://github.com/anhquanbd2021/cc-user-stories-v-use-cases" title="cc-user-stories-v-use-cases — an Article Playbook demo (view source)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="9" height="9" rx="2" fill="#2dd4bf"/><rect x="13" y="2" width="9" height="9" rx="2" fill="#2dd4bf" opacity=".45"/><rect x="2" y="13" width="9" height="9" rx="2" fill="#2dd4bf" opacity=".45"/><rect x="13" y="13" width="9" height="9" rx="4.5" fill="#2dd4bf"/></svg><b>cc-user-stories-v-use-cases</b><i>DEMO</i></a><!-- pb-shell --><!-- pb-back --><a class="pb-back" id="pb-back" href="https://github.com/anhquanbd2021/cc-user-stories-v-use-cases" title="Back to the article — cc-user-stories-v-use-cases">← Article <i>PLAYBOOK</i></a><script>(function(){var a=document.getElementById('pb-back');if(!a)return;var h=location.hostname;if(/^(localhost|127\.0\.0\.1|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.)/.test(h)){a.href='//'+h+':'+(/^(localhost|127\.0\.0\.1)$/.test(h)?'1234':'30082')+'/microsites/article.html?slug=cc-user-stories-v-use-cases';}})();</script><!-- pb-back --></body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "agent-spec-grader",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Agent Spec Grader — score a task spec for an autonomous agent against the eight fields it cannot guess, from a one-line wish to an agent-ready spec.",
+  "scripts": {
+    "start": "node app/server.js",
+    "report": "node scripts/spec-report.mjs",
+    "test": "node --test \"test/*.test.mjs\"",
+    "check": "npm test && npm run report"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

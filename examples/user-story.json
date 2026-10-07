@@ -1,0 +1,11 @@
+{
+  "title": "Auto-merge dependency PRs",
+  "actor": "the repo maintainer",
+  "action": "merge Dependabot pull requests that pass all CI checks",
+  "outcome": "dependency updates land without human review",
+  "acceptanceCriteria": [
+    "PR is merged only after every required CI check is green",
+    "a comment on the merged PR links to the CI run",
+    "no PR authored by a human is ever merged"
+  ]
+}
